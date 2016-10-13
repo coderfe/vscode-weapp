@@ -9,8 +9,8 @@ Wechat app code snippets for VSCode.
 
 ## Supported languages
 
-- [ x ] javascript
-- [ ] wxml
+- javascript
+- wxml
 
 ## Usage
 
