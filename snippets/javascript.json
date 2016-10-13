@@ -1,0 +1,211 @@
+{
+	// 注册程序
+	"wx.App": {
+		"prefix": "wxApp",
+		"body": [
+			"App({",
+			"\tonLaunch: function() {",
+			"\t\t$1",
+			"\t},",
+			"\tonShow: function() {",
+			"\t\t$2",
+			"\t},",
+			"\tonHide: function() {",
+			"\t\t$3",
+			"\t},",
+			"\tglobalData: ${globalData}",
+			"})"
+		],
+		"description": "注册程序"
+	},
+	// 注册页面
+	"wx.page": {
+		"prefix": "wxPage",
+		"body": [
+			"Page({",
+			"\tdata: {",
+			"\t\t$1",
+			"\t},",
+			"\tonLoad: function(options) {",
+			"\t\t//Do some initialize when page load.",
+			"\t\t$2",
+			"\t},",
+			"\tonReady: function() {",
+			"\t\t//Do some when page ready.",
+			"\t\t$3",			
+			"\t},",
+			"\tonShow: function() {",
+			"\t\t//Do some when page show.",
+			"\t\t$4",			
+			"\t},",
+			"\tonHide: function() {",
+			"\t\t//Do some when page hide.",
+			"\t\t$5",			
+			"\t},",
+			"\tonUnload: function() {",
+			"\t\t//Do some when page unload.",
+			"\t\t$6",			
+			"\t},",
+			"\tonPullDownRefresh: function() {",
+			"\t\t//Do some when page pull down.",
+			"\t\t$7",			
+			"\t}",
+			"})"
+		],
+		"description": "注册页面"
+	},
+	// 网络请求
+	"wx.request": {
+    "prefix": "wxRequest",
+    "body": [
+      "wx.request({",
+			"\turl: '$1',",
+			"\theader: {",
+			"\t\t'Content-Type': 'application/json'",
+			"\t},",
+			"\tsuccess: function(res) {",
+			"\t\t$2",
+			"\t}",
+			"})"
+    ],
+    "description": "网络请求"
+  },
+	// 获取位置
+	"wx.getLocation": {
+		"prefix": "wxGetLocation",
+		"body": [
+			"wx.getLocation({",
+			"\ttype: '${wgs84}',",
+			"\tsuccess: function(res) {",
+			"\t\tvar latitude = res.latitude",
+			"\t\tvar longitude = res.longitude",
+			"\t},",
+			"})"
+		],
+		"description": "获取位置"
+	},
+	// 打开位置
+	"wx.openLocation": {
+		"prefix": "wxOpenLocation",
+		"body": [
+			"wx.getLocation({",
+			"\ttype: '${gcj02}',",
+			"\tsuccess: function(res) {",
+			"\t\tvar latitude = res.latitude",
+			"\t\tvar longitude = res.longitude",
+			"\t\twx.openLocation({",
+			"\t\t\tlatitude: latitude,",
+			"\t\t\tlongitude: longitude",
+			"\t\t})",
+			"\t},",
+			"})"
+		],
+		"description": "打开位置"
+	},
+	// 用户登录
+	"wx.login": {
+		"prefix": "wxLogin",
+		"body": [
+			"wx.login({",
+			"\tsuccess: function(res) {",
+			"\t\tif(res.code) {",
+			"\t\t\t$1",
+			"\t\t} else {",
+			"\t\t\tconsole.log(res.errMsg)",
+			"\t\t}",
+			"\t}",
+			"})"
+		],
+		"description": "用户登录"
+	},
+	// 用户信息
+	"wx.getUserInfo": {
+		"prefix": "wxGetUserInfo",
+		"body": [
+			"wx.getUserInfo({",
+			"\tsuccess: function(res) {",
+			"\t\tvar userInfo = res.userInfo",
+			"\t\tvar nickName = userInfo.nickName",
+			"\t\tvar avatarUrl = userInfo.avatarUrl",
+			"\t\tvar gender = userInfo.gender	// 性别：0：未知、1：男、2：女",
+			"\t\tvar province = userInfo.province",
+			"\t\tvar city = userInfo.city",
+			"\t\tvar country = userInfo.country",
+			"\t}",
+			"})"
+		],
+		"description": "用户信息"
+	},
+	// 上传文件
+	"wx.uploadFile": {
+		"prefix": "wxUploadFile",
+		"body": [
+			"wx.uploadFile({",
+			"\turl: '$1',",
+			"\tfilePath: ${filePath},",
+			"\tname: 'file',",
+			"})"
+		],
+		"description": "上传文件"
+	},
+	// 下载文件
+	"wx.downloadFile": {
+		"prefix": "wxDownloadFile",
+		"body": [
+			"wx.downloadFile({",
+			"\turl: '$1',",
+			"\ttype: ${image},",
+			"\tsuccess: function(res) {",
+			"\t\t// do something",
+			"\t}",
+			"})"
+		],
+		"description": "下载文件"
+	},
+	// 选择图片
+	"wx.chooseImage": {
+		"prefix": "wxChooseImage",
+		"body": [
+			"wx.chooseImage({",
+			"\tcount: 9,\t// 默认为9",
+			"\tsizeType: [${'original', 'compressed'}],\t// 指定原图或者压缩图",
+			"\tsourceType: ['${album}', '${camera}'],\t// 指定图片来源",
+			"\tsuccess: function(res) {",
+			"\t\tvar tempFilePaths = res.tempFilePaths",
+			"\t}",
+			"})"
+		],
+		"description": "选择图片"
+	},
+	// 预览图片
+	"wx.previewImage": {
+		"prefix": "wxPreviewImage",
+		"body": [
+			"wx.previewImage({",
+			"\tcurrent: '$1',",
+			"\turls: [$2]",
+			"})"
+		],
+		"description": "预览图片"
+	},
+	// 跳转页面
+	"wx.navigateTo": {
+		"prefix": "wxNavigateTo",
+		"body": [
+			"wx.navigateTo({",
+			"\turl: '$1'",
+			"})"
+		],
+		"description": "保留当前页面并跳转页面"
+	},
+	// 跳转页面
+	"wx.redirectTo": {
+		"prefix": "wxRedirectTo",
+		"body": [
+			"wx.redirectTo({",
+			"\turl: '$1'",
+			"})"
+		],
+		"description": "关闭当前页面并跳转页面"
+	}
+}
