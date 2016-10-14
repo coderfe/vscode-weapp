@@ -207,5 +207,10 @@
 			"})"
 		],
 		"description": "关闭当前页面并跳转页面"
+	},
+	// 创建websocket
+	"wx.connectSocket": {
+		"prefix": "wxConnectSocket",
+		"body": []
 	}
 }
