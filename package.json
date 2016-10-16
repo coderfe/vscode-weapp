@@ -23,7 +23,14 @@
     "vscode": "^1.5.0"
   },
   "categories": [
-    "Snippets"
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "weapp",
+    "wechat",
+    "weixin",
+    "微信api"
   ],
   "contributes": {
     "snippets": [
