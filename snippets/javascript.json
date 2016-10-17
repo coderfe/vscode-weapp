@@ -13,8 +13,8 @@
 			"\tonHide: function() {",
 			"\t\t$3",
 			"\t},",
-			"\tglobalData: ${globalData}",
-			"})"
+			"\tglobalData: ${4:globalData}",
+			"})$5"
 		],
 		"description": "注册程序"
 	},
@@ -50,7 +50,7 @@
 			"\t\t//Do some when page pull down.",
 			"\t\t$7",			
 			"\t}",
-			"})"
+			"})$8"
 		],
 		"description": "注册页面"
 	},
@@ -66,7 +66,7 @@
 			"\tsuccess: function(res) {",
 			"\t\t$2",
 			"\t}",
-			"})"
+			"})$3"
     ],
     "description": "网络请求"
   },
@@ -75,12 +75,12 @@
 		"prefix": "wxGetLocation",
 		"body": [
 			"wx.getLocation({",
-			"\ttype: '${wgs84}',",
+			"\ttype: '${1:wgs84}',",
 			"\tsuccess: function(res) {",
 			"\t\tvar latitude = res.latitude",
 			"\t\tvar longitude = res.longitude",
 			"\t},",
-			"})"
+			"})$2"
 		],
 		"description": "获取位置"
 	},
@@ -89,7 +89,7 @@
 		"prefix": "wxOpenLocation",
 		"body": [
 			"wx.getLocation({",
-			"\ttype: '${gcj02}',",
+			"\ttype: '${1:gcj02}',",
 			"\tsuccess: function(res) {",
 			"\t\tvar latitude = res.latitude",
 			"\t\tvar longitude = res.longitude",
@@ -98,7 +98,7 @@
 			"\t\t\tlongitude: longitude",
 			"\t\t})",
 			"\t},",
-			"})"
+			"})$2"
 		],
 		"description": "打开位置"
 	},
@@ -114,7 +114,7 @@
 			"\t\t\tconsole.log(res.errMsg)",
 			"\t\t}",
 			"\t}",
-			"})"
+			"})$2"
 		],
 		"description": "用户登录"
 	},
@@ -132,7 +132,7 @@
 			"\t\tvar city = userInfo.city",
 			"\t\tvar country = userInfo.country",
 			"\t}",
-			"})"
+			"})$1"
 		],
 		"description": "用户信息"
 	},
@@ -142,9 +142,9 @@
 		"body": [
 			"wx.uploadFile({",
 			"\turl: '$1',",
-			"\tfilePath: ${filePath},",
+			"\tfilePath: ${2:filePath},",
 			"\tname: 'file',",
-			"})"
+			"})$3"
 		],
 		"description": "上传文件"
 	},
@@ -154,11 +154,11 @@
 		"body": [
 			"wx.downloadFile({",
 			"\turl: '$1',",
-			"\ttype: ${image},",
+			"\ttype: ${2:image},",
 			"\tsuccess: function(res) {",
 			"\t\t// do something",
 			"\t}",
-			"})"
+			"})$3"
 		],
 		"description": "下载文件"
 	},
@@ -168,12 +168,12 @@
 		"body": [
 			"wx.chooseImage({",
 			"\tcount: 9,\t// 默认为9",
-			"\tsizeType: [${'original', 'compressed'}],\t// 指定原图或者压缩图",
-			"\tsourceType: ['${album}', '${camera}'],\t// 指定图片来源",
+			"\tsizeType: [${1:'original', 'compressed'}],\t// 指定原图或者压缩图",
+			"\tsourceType: ['${2:album}', '${3:camera}'],\t// 指定图片来源",
 			"\tsuccess: function(res) {",
 			"\t\tvar tempFilePaths = res.tempFilePaths",
 			"\t}",
-			"})"
+			"})$4"
 		],
 		"description": "选择图片"
 	},
@@ -184,7 +184,7 @@
 			"wx.previewImage({",
 			"\tcurrent: '$1',",
 			"\turls: [$2]",
-			"})"
+			"})$3"
 		],
 		"description": "预览图片"
 	},
@@ -194,7 +194,7 @@
 		"body": [
 			"wx.navigateTo({",
 			"\turl: '$1'",
-			"})"
+			"})$2"
 		],
 		"description": "保留当前页面并跳转页面"
 	},
@@ -204,13 +204,76 @@
 		"body": [
 			"wx.redirectTo({",
 			"\turl: '$1'",
-			"})"
+			"})$2"
 		],
 		"description": "关闭当前页面并跳转页面"
 	},
 	// 创建websocket
 	"wx.connectSocket": {
 		"prefix": "wxConnectSocket",
-		"body": []
+		"body": [
+			"wx.connectSocket({",
+			"\turl: '$1',",
+			"\tsuccess: function(res) {",
+			"\t\t$2",
+			"\t}",
+			"})$3"
+		],
+		"description": "创建WebSocket连接"
+	},
+	// 监听WebSocket连接打开事件
+	"wx.onSocketOpen": {
+		"prefix": "wxOnSocketOpen",
+		"body": [
+			"wx.onSocketOpen(function(res) {",
+			"\t${1:// do something}",
+			"})$2"
+		],
+		"description": "监听WebSocket连接打开事件"
+	},
+	// 监听WebSocket错误
+	"wx.onSocketError": {
+		"prefix": "wxOnSocketError",
+		"body": [
+			"wx.onSocketError(function(res) {",
+			"\t${1:// do something}",
+			"})$2"
+		],
+		"description": "监听WebSocket错误"
+	},
+	// 通过 WebSocket 连接发送数据
+	"wx.sendSocketMessage": {
+		"prefix": "wxSendSocketMessage",
+		"body": [
+			"wx.senfSocketMessage({",
+			"\tdata: ${1:data}",
+			"})$2"
+		],
+		"description": "通过 WebSocket 连接发送数据"
+	},
+	// 监听WebSocket接受到服务器的消息事件
+	"wx.onSocketMessage": {
+		"prefix": "wxOnSocketMessage",
+		"body": [
+			"wx.onSocketMessage(function(res) {",
+			"\t${1:// do something}",
+			"})$2"
+		],
+		"description": "监听WebSocket接受到服务器的消息事件"
+	},
+	// 关闭WebSocket连接
+	"wx.closeSocket": {
+		"prefix": "wxCloseSocket",
+		"body": "wx.closeSocket()",
+		"description": "关闭WebSocket连接"
+	},
+	// 监听WebSocket关闭
+	"wx.onSocketClose": {
+		"prefix": "wxOnSocketClose",
+		"body": [
+			"wx.onSocketClose(function(res) {",
+			"\t${1:// do something}",
+			"})$2"
+		]
 	}
 }

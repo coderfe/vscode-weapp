@@ -1,4 +1,7 @@
 # Change Log
 
+## 0.0.13
+- Add some new snippets
+
 ## v0.0.12
-- 微信小程序的 api 提示
+- Wechat app api snippets
