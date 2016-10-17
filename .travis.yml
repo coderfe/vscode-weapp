@@ -2,8 +2,8 @@ language: node_js
 node_js: 
   - '6'
 before_install:
-  - 'git clone https://github.com/coderfe/vscode-wxml'
-  - 'cd vscode-wxml'
+  - 'git clone https://github.com/coderfe/vscode-weapp'
+  - 'cd vscode-weapp'
 install:
   - npm install -g vsce
 script:
