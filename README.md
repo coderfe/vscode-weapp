@@ -1,19 +1,15 @@
-# Wechat app snippets
+# 微信小程序 API 提示
 
-Wechat app api code snippets for VSCode.
+为 VSCode 提供微信小程序 API 提示以及代码片段
 
 [![version](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-wxml.svg)](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-weapp-api.svg)
 [![installs](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-wxml.svg)](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-weapp-api.svg)
 
-## Installation
+## 安装
 
-1. `Ctrl + Shift + P` or `Cmd + Shift + P`
-2. Type `weapp snippets`
+1. 打开编辑器，`Ctrl + Shift + X`，搜索 **weapp-api**
+2. 点击 `install`
 
-## Supported languages
-
-- javascript
-
-## Usage
+## 使用
 
 ![vscode-weapp-snippets](http://oaz5uxplb.bkt.clouddn.com/coderfee-snippets.gif)

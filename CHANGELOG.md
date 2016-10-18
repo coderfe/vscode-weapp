@@ -1,7 +1,9 @@
-# Change Log
+# 更新日志
 
-## 0.0.13
-- Add some new snippets
+## v0.0.13 ~ 0.0.16
+
+- 添加新的代码片段，优化 Tab 跳转
 
 ## v0.0.12
-- Wechat app api snippets
+
+- 微信小程序代码片段
