@@ -274,6 +274,7 @@
 			"wx.onSocketClose(function(res) {",
 			"\t${1:// do something}",
 			"})$2"
-		]
+		],
+		"descripton": "监听WebSocket关闭"
 	}
 }

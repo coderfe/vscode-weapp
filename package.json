@@ -2,7 +2,7 @@
     "name": "vscode-weapp-api",
     "displayName": "vscode weapp api",
     "description": "Wechat app api snippets for vscode",
-    "version": "0.0.16",
+    "version": "0.1.1",
     "publisher": "coderfee",
     "icon": "images/weapp.png",
     "license": "MIT LICENSE",
@@ -37,6 +37,10 @@
             {
                 "language": "javascript",
                 "path": "./snippets/javascript.json"
+            },
+            {
+                "language": "json",
+                "path": "./snippets/json.json"
             }
         ]
     }
