@@ -5,6 +5,8 @@
 [![version](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-wxml.svg)](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-weapp-api.svg)
 [![installs](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-wxml.svg)](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-weapp-api.svg)
 
+[TOC]
+
 ## 安装
 
 1. 打开编辑器，`Ctrl + Shift + X`，搜索 **weapp-api**
@@ -12,37 +14,150 @@
 
 ## 使用
 
-**键入关键词，然后回车，关键词不在意不大小写**
+### 小程序 API 提示
 
-| 关键词                 | 代码片段                     | 备注                |
-| ------------------- | ------------------------ | ----------------- |
-| wxApp               | App({})                  | 注册小程序             |
-| wxPage              | Page({})                 | 注册页面              |
-| wxRequest           | wx.chooseImage({})       | 选择图片              |
-| wxGetLocation       | wx.getLocation({})       | 获取位置              |
-| wxOpenLocation      | wx.openLocation({})      | 打开位置              |
-| wxLogin             | wx.login({})             | 登录                |
-| wxGetUserInfo       | wx.getUserInfo({})       | 获取用户信息            |
-| wxUploadFile        | wx.uploadFile({})        | 上传文件              |
-| wxDownloadFile      | wx.downloadFile({})      | 下载文件              |
-| wxChooseImage       | wx.chooseImage({})       | 选择图片              |
-| wxPreviewImage      | wx.previewImage({})      | 预览图片              |
-| wxNavigateTo        | wx.navigateTo({})        | 保留当前页面并跳转         |
-| wxRedirectTo        | wx.redirectTo({})        | 关闭当前页面并跳转         |
-| wxConnectSocket     | wx.connectSocket({})     | 创建 Websocket 连接   |
-| wxOnSocketOpen      | wx.onSocketOpen({})      | 监听 Websocket 连接   |
-| wxOnSocketError     | wx.onSocketError({})     | 监听 Websocket 错误   |
-| wxSendSocketMessage | wx.sendSocketMessage({}) | 发送 Websocket 消息   |
-| wxOnSocketMessage   | wx.onSocketMessage({})   | 监听 Websocket 消息事件 |
-| wxCloseSocket       | wx.closeSocket()         | 关闭 Websocket 连接   |
-| wxOnSocketClose     | wx.onSocketClose         | 关闭 Websocket 监听   |
+键入关键词 `wx`，就会出现提示，然后回车。关键词不区分大小写。
 
-#### Js API 提示
+![vscode-weapp-api-snippets](http://oaz5uxplb.bkt.clouddn.com/vscode/api.gif)
 
-![vscode-weapp-api-snippets](http://oaz5uxplb.bkt.clouddn.com/vscode-js.gif)
+#### API 代码示例
+
+- wxapp
+
+  ```javascript
+  App({
+    onLaunch: function() {
+      
+    },
+    onShow: function() {
+      
+    },
+    onHide: function() {
+      
+    },
+    globalData: globalData
+  })
+  ```
+
+- wxpage
+
+  ```javascript
+  Page({
+    data: {
+      
+    },
+    onLoad: function(options) {
+      //Do some initialize when page load.
+      
+    },
+    onReady: function() {
+      //Do some when page ready.
+      
+    },
+    onShow: function() {
+      //Do some when page show.
+      
+    },
+    onHide: function() {
+      //Do some when page hide.
+      
+    },
+    onUnload: function() {
+      //Do some when page unload.
+      
+    },
+    onPullDownRefresh: function() {
+      //Do some when page pull down.
+      
+    }
+  })
+  ```
+
+- wxgetlocation
+
+  ```javascript
+  wx.getLocation({
+    type: 'wgs84',
+    success: function(res) {
+      var latitude = res.latitude
+      var longitude = res.longitude
+    },
+  })
+  ```
+
+- wxrequest
+
+  ```javascript
+  wx.request({
+    url: '',
+    header: {
+      'Content-Type': 'application/json'
+    },
+    success: function(res) {
+      
+    }
+  })
+  ```
+
+- ······more
 
 ### app.json 配置提示
 
-**`app.json` 中请注意添加逗号。**
+`app.json` 中请注意添加逗号。关键词只有 4 个：`pages` / `window` / `tabbar` / `network`
 
-![vscode-weapp-json-snippets](http://oaz5uxplb.bkt.clouddn.com/vscode-json.gif)
+![vscode-weapp-json-snippets](http://oaz5uxplb.bkt.clouddn.com/vscode/json.gif)
+
+#### app.json 代码示例
+
+- page
+
+  ```json
+  "pages": [
+      "pages/index/index",
+      "add your pages path"
+  ]
+  ```
+
+- window
+
+  ```json
+  "window": {
+      "navigationBarBackgroundColor": "#000000",
+      "navigationBarTextStyle": "white",
+      "navigationBarTitleText": "Wechat",
+      "backgroundColor": "#ffffff",
+      "backgroundTextStyle": "dark",
+      "enablePullDownRefresh": false
+  }
+  ```
+
+- tabbar
+
+  ```json
+  "tabBar": {
+      "color": "#cccccc",
+      "selectedColor": "#000000",
+      "backgroundColor": "#ffffff",
+      "borderStyle": "black",
+      // list 中至少 2 个对象，最多 5 个对象
+      "list": [{
+        "pagePath": "pages/index/index",
+        "text": "text",
+        "iconPath": "iconPath",
+        "selectedIconPath": "selectedIconPath"
+      }]
+  }
+  ```
+
+- network
+
+  ```json
+  "networkTimeOut": {
+      "request": number,
+      "connectSocket": number,
+      "uploadFile": number,
+      "downloadFile": number
+  }
+  ```
+
+  ​**Enjoy!**
