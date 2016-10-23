@@ -101,7 +101,7 @@
 
 ### app.json 配置提示
 
-`app.json` 中请注意添加逗号。关键词只有 4 个：`pages` / `window` / `tabbar` / `network`
+`app.json` 中请注意添加逗号。关键词只有 5 个：`pages` / `window` / `tabbar` / `network` / `debug`
 
 ![vscode-weapp-json-snippets](http://oaz5uxplb.bkt.clouddn.com/vscode/json.gif)
 
@@ -151,11 +151,17 @@
 
   ```json
   "networkTimeOut": {
-      "request": number,
-      "connectSocket": number,
-      "uploadFile": number,
-      "downloadFile": number
+      "request": $1,
+      "connectSocket": $2,
+      "uploadFile": $3,
+      "downloadFile": $4
   }
   ```
+
+- debug
+
+```json
+"debug": true
+```
 
   ​**Enjoy!**

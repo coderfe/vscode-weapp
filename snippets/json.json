@@ -46,12 +46,19 @@
 		"prefix": "network",
 		"body": [
 			"\"networkTimeOut\": {",
-			"\t\"request\": ${1:number},",
-			"\t\"connectSocket\": ${2:number},",
-			"\t\"uploadFile\": ${3:number},",
-			"\t\"downloadFile\": ${4:number}",
+			"\t\"request\": $1,",
+			"\t\"connectSocket\": $2,",
+			"\t\"uploadFile\": $3,",
+			"\t\"downloadFile\": $4",
 			"}$5"
 		],
 		"description": "设置网络请求的超时时间"
+	},
+	"debug": {
+		"prefix": "debug",
+		"body": [
+			"\"debug\": ${true}"
+		],
+		"description": "是否开启 debug 模式"
 	}
 }
