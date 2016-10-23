@@ -2,10 +2,8 @@
 
 为 VSCode 提供微信小程序 API 提示及代码片段
 
-[![version](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-wxml.svg)](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-weapp-api.svg)
-[![installs](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-wxml.svg)](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-weapp-api.svg)
-
-[TOC]
+[![version](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-weapp-api.svg)](http://vsmarketplacebadge.apphb.com/version/coderfee.vscode-weapp-api.svg)
+[![installs](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-weapp-api.svg)](http://vsmarketplacebadge.apphb.com/installs/coderfee.vscode-weapp-api.svg)
 
 ## 安装
 
