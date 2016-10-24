@@ -2,7 +2,7 @@
     "name": "vscode-weapp-api",
     "displayName": "vscode weapp api",
     "description": "Wechat app api snippets for vscode",
-    "version": "0.1.4",
+    "version": "0.1.6",
     "publisher": "coderfee",
     "icon": "images/weapp.png",
     "license": "MIT LICENSE",

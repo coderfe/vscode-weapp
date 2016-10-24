@@ -137,7 +137,7 @@
       "selectedColor": "#000000",
       "backgroundColor": "#ffffff",
       "borderStyle": "black",
-      // list 中至少 2 个对象，最多 5 个对象
+      // list中至少2个对象，最多5个对象
       "list": [{
         "pagePath": "pages/index/index",
         "text": "text",
@@ -160,8 +160,8 @@
 
 - debug
 
-```json
-"debug": true
-```
+  ```json
+  "debug": true
+  ```
 
   ​**Enjoy!**
