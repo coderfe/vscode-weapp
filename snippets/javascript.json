@@ -32,23 +32,23 @@
 			"\t},",
 			"\tonReady: function() {",
 			"\t\t//Do some when page ready.",
-			"\t\t$3",			
+			"\t\t$3",
 			"\t},",
 			"\tonShow: function() {",
 			"\t\t//Do some when page show.",
-			"\t\t$4",			
+			"\t\t$4",
 			"\t},",
 			"\tonHide: function() {",
 			"\t\t//Do some when page hide.",
-			"\t\t$5",			
+			"\t\t$5",
 			"\t},",
 			"\tonUnload: function() {",
 			"\t\t//Do some when page unload.",
-			"\t\t$6",			
+			"\t\t$6",
 			"\t},",
 			"\tonPullDownRefresh: function() {",
 			"\t\t//Do some when page pull down.",
-			"\t\t$7",			
+			"\t\t$7",
 			"\t}",
 			"})$8"
 		],
@@ -56,9 +56,9 @@
 	},
 	// 网络请求
 	"wx.request": {
-    "prefix": "wxRequest",
-    "body": [
-      "wx.request({",
+		"prefix": "wxRequest",
+		"body": [
+			"wx.request({",
 			"\turl: '$1',",
 			"\theader: {",
 			"\t\t'Content-Type': 'application/json'",
@@ -67,9 +67,9 @@
 			"\t\t$2",
 			"\t}",
 			"})$3"
-    ],
-    "description": "网络请求"
-  },
+		],
+		"description": "网络请求"
+	},
 	// 获取位置
 	"wx.getLocation": {
 		"prefix": "wxGetLocation",
@@ -188,6 +188,122 @@
 		],
 		"description": "预览图片"
 	},
+	// 获取图片信息
+	"wx.getImageInfo": {
+		"prefix": "wxGetImageInfo",
+		"body": [
+			"wx.getImageInfo({",
+			"\tsrc: '$1',",
+			"\tsuccess: function(res) {",
+			"\t\t${2:// width & height}",
+			"\t}",
+			"})"
+		],
+		"description": "获取图片信息"
+	},
+	// 录音
+	"wx.startRecord": {
+		"prefix": "wxStartRecord",
+		"body": [
+			"wx.startRecord({",
+			"\tsuccess: function(res) {",
+			"\t\t${1://success, ruturn path of record}",
+			"\t},",
+			"\tfail: function(res) {",
+			"\t\t${2:// fail, do something}",
+			"\t},",
+			"})"
+		],
+		"description": "开始录音"
+	},
+	"wx.stopRecord": {
+		"prefix": "wxStopRecord",
+		"body": [
+			"wx.stopRecord()"
+		],
+		"description": "停止录音"
+	},
+	// 音频播放控制
+	"wx.playVoice": {
+		"prefix": "wxPlayVoice",
+		"body": [
+			"wx.playVoice({",
+			"\tfilePath: '$1'",
+			"\t// callback functions, success & fail & complete",
+			"})"
+		],
+		"description": "播放语音"
+	},
+	"wx.pauseVoice": {
+		"prefix": "wxPauseVoice",
+		"body": [
+			"wx.pauseVoice()"
+		],
+		"description": "暂停播放"
+	},
+	"wx.stopVoice": {
+		"prefix": "wxStopVoice",
+		"body": [
+			"wx.stopVoice()"
+		],
+		"description": "停止播放"
+	},
+	/*=========
+	音乐播放控制
+	======== */
+	// 获取音乐播放状态
+	"wx.getBackgroundAudioPlayerState": {
+		"prefix": "wxGetBackgroundAudioState",
+		"body": [
+			"wx.getBackgroundAudioPlayerState({",
+			"\t// callbacks, success & fail & complete",
+			"\tsuccess: function(res) {",
+			"\t\tvar status = res.status; // 播放状态",
+			"\t\tvar dataUrl = res.dataUrl; // 链接",
+			"\t\tvar currentPosition = res.currentPosition; // 播放位置",
+			"\t\tvar duration = res.duration; //音频长度",
+			"\t\tvar downloadPercent = res.downloadPercent; // 下载进度",
+			"\t}",
+			"})"
+		],
+		"description": "获取音乐播放状态"
+	},
+	// 播放音乐
+	"wx.playBackgroundAudio": {
+		"prefix": "wxPlayBackgroundAudio",
+		"body": [
+			"wx.playBackgroundAudio({",
+			"\tdataUrl: '$1',",
+			"\ttitle: '$2',",
+			"\tcoverImgUrl: '$3'",
+			"\t${4:// callback functions, success & fail & complete}",
+			"})"
+		],
+		"description": "播放音乐"
+	},
+	// 暂停播放音乐
+	"wx.pauseBackgroundAudio": {
+		"prefix": "wxPauseBackgroundAudio",
+		"body": "wx.pauseBackgroundAudio()",
+		"description": "暂停播放音乐"
+	},
+	// 控制播放音乐进度
+	"wx.seekBackgroundAudio": {
+		"prefix": "wxSeekBackgroundAudio",
+		"body": [
+			"wx.seekBackgroundAudio({",
+			"\tposition: ${1:100}",
+			"\t${2:// callback functions, success & fail & complete}",
+			"})"
+		],
+		"description": "控制播放音乐进度"
+	},
+	// 停止播放音乐
+	"wx.stopBackgroundAudio": {
+		"prefix": "wxStopBackgroundAudio",
+		"body": "wx.stopBackgroundAudio()",
+		"description": "停止播放音乐"
+	},
 	// 跳转页面
 	"wx.navigateTo": {
 		"prefix": "wxNavigateTo",
@@ -275,6 +391,30 @@
 			"\t${1:// do something}",
 			"})$2"
 		],
-		"descripton": "监听WebSocket关闭"
+		"description": "监听WebSocket关闭"
+	},
+	/* =========
+	文件
+	======== */
+	// 保存文件到本地
+	"wx.saveFile": {
+		"prefix": "wxSaveFile",
+		"body": [
+			"wx.saveFile({",
+			"\ttempFilePath: '$1',",
+			"\tsuccess: function(res) {",
+			"\t\t// success",
+			"\t}",
+			"})"
+		],
+		"description": "保存文件到本地"
+	},
+	// 获取保存到本地的文件列表
+	"wx.getSavedFileList": {
+		"prefix": "wxGetSavedFileList",
+		"body": [
+			"wx.getSavedFileList()"
+		],
+		"description": "获取保存到本地的文件列表"
 	}
 }
