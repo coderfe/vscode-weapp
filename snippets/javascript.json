@@ -413,8 +413,37 @@
 	"wx.getSavedFileList": {
 		"prefix": "wxGetSavedFileList",
 		"body": [
-			"wx.getSavedFileList()"
+			"wx.getSavedFileList({",
+			"\tsuccess: function(res) {",
+			"\t\t${1:console.log(res.fileList)}",
+			"\t\t${2:// callback functions, fail & complete}",
+			"\t}",
+			"})"
 		],
 		"description": "获取保存到本地的文件列表"
+	},
+	// 获取本地文件的文件信息
+	"wx.getSavedFileInfo": {
+		"prefix": "wxGetSavedFileInfo",
+		"body": [
+			"wx.getSavedFileInfo({",
+			"\tfilePath: $1,",
+			"\tsuccess: function(res) {",
+			"\t\t${2:// res.size & res.createTime}",
+			"\t}",
+			"})"
+		],
+		"description": "获取本地文件的文件信息"
+	},
+	// 删除本地存储的文件
+	"wx.removeSavedFile": {
+		"prefix": "wxRemoveSavedFile",
+		"body": [
+			"wx.removeSavedFile({",
+			"\tfilePath: ${1:path}",
+			"\t${2:// callback functions, success & fail & complete}",
+			"})"
+		],
+		"description": "删除本地存储的文件"
 	}
 }
