@@ -1,6 +1,22 @@
 # 更新日志
 
-## v.1.7
+## v0.1.8
+
+- 增加了一些参数使用说明
+- 增加了新的 api
+  - wxOpenDocumnet
+  - wxMakePhoneNumber
+  - success
+  - fail
+  - complete
+  - wxShowToast
+  - wxHideToast
+  - wxShowModal
+  - wxShowActionSheet
+  - wxHideKeyboard
+  - wxStopPullDownRefresh
+
+## v0.1.7
 
 - 增加了一些新的代码片段
 
