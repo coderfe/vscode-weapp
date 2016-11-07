@@ -476,9 +476,238 @@
 		"prefix": "wxOpenDocument",
 		"body": [
 			"wx.openDocument({",
-			"\tfilePath: \"$1\"",
+			"\tfilePath: '$1'",
 			"})"
 		],
 		"description": "filePath 文件路径，可通过 downFile 获得\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	// 接口调用成功的回调函数
+	"success": {
+		"prefix": "success",
+		"body": [
+			"success: function() {",
+			"\t$1",
+			"}"
+		],
+		"description": "接口调用成功的回调函数"
+	},
+	// 接口调用失败的回调函数
+	"fail": {
+		"prefix": "fail",
+		"body": [
+			"fail: function() {",
+			"\t$1",
+			"}"
+		],
+		"description": "接口调用失败的回调函数"
+	},
+	// 接口调用结束的回调函数（调用成功、失败都会执行）
+	"complete": {
+		"prefix": "complete",
+		"body": [
+			"complete: function() {",
+			"\t$1",
+			"}"
+		],
+		"description": "接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	// 拨打电话
+	"wx.makePhoneCall": {
+		"prefix": "wxMakePhoneCall",
+		"body": [
+			"wx.makePhoneCall({",
+			"\tphoneNumber: '$1'",
+			"})"
+		],
+		"description": "phoneNumber 需要拨打的电话号码\n\nsuccess 接口调用成功的回调\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	// 显示消息提示框
+	"wx.showToast": {
+		"prefix": "wxShowToast",
+		"body": [
+			"wx.showToast({",
+			"\ttitle: '$1',",
+			"\ticon: '$2'",
+			"})"
+		],
+		"description": "title 提示的内容\n\nicon 图标，只支持\"success\"、\"loading\"\n\nduration 提示的延迟时间，单位毫秒，默认：1500, 最大为10000\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	// 隐藏消息提示框
+	"wx.hideToast": {
+		"prefix": "wxHideToast",
+		"body": "wx.hideToast()",
+		"description": "隐藏消息提示框"
+	},
+	// 显示模态弹窗
+	"wx.showModal": {
+		"prefix": "wxShowModal",
+		"body": [
+			"wx.showModal({",
+			"\ttitle: '$1',",
+			"\tcontent: '$2',",
+			"})"
+		],
+		"description": "title 提示的标题\n\ncontent 提示的内容\n\nshowCancel 是否显示取消按钮，默认为 true\n\ncancelText 取消按钮的文字，默认为\"取消\"\n\ncancelColor 取消按钮的文字颜色，默认为\"#000000\"\n\nconfirmText 确定按钮的文字，默认为\"确定\"\n\nconfirmColor 确定按钮的文字颜色，默认为\"#3CC51F\"\n\nsuccess 接口调用成功的回调函数，返回res.confirm==1时，表示用户点击确定按钮\n\nfail接口调用失败的回调函数"
+	},
+	// 显示底部上拉菜单栏
+	"wx.showActionSheet": {
+		"prefix": "wxShowActionSheet",
+		"body": [
+			"wx.showActionSheet({",
+			"\titemList: [$1],",
+			"\titemColor: '$2'",
+			"})"
+		],
+		"description": "itemList 按钮的文字数组，数组长度最大为6个\n\nitemColor 按钮的文字颜色，默认为\"#000000\"\n\nsuccess 接口调用成功的回调函数，详见返回参数说明\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\ncancel 用户是否取消选择\n\ntapIndex 用户点击的按钮，从上到下的顺序，从0开始"
+	},
+	// 收起键盘
+	"wx.hideKeyboard": {
+		"prefix": "wxHideKeyboard",
+		"body": "wx.hideKeyboard()",
+		"description": "收起键盘"
+	},
+	// 停止当前页面下拉刷新
+	"wx.stopPullDownRefresh": {
+		"prefix": "wxStopPullDownRefresh",
+		"body": "wx.stopPullDownRefresh()",
+		"description": "停止当前页面下拉刷新"
+	},
+	// 数据缓存
+	"wx.setStorage": {
+		"prefix": "wxSetStorage",
+		"body": [
+			"wx.setStorage({",
+			"\tkey: '$1',",
+			"\tdata: '$2'",
+			"})"
+		],
+		"description": "key 本地缓存中指定的 key\n\ndata 需要存储的内容\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	"wx.setStorageSync": {
+		"prefix": "wxSetStorageSync",
+		"body": "wx.setStorageSync(${1:key}, ${2:data})",
+		"description": "key 本地缓存中的指定的 key\n\ndata 需要存储的内容"
+	},
+	"wx.getStorage": {
+		"prefix": "wxGetStorage",
+		"body": [
+			"wx.getStorage({",
+			"\tkey: '$1'",
+			"})"
+		],
+		"description": "key 本地缓存中的指定的 key\n\nsuccess 接口调用的回调函数,res = {data: key对应的内容}\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	"wx.getStorageSync": {
+		"prefix": "wxGetStorageSync",
+		"body": "wx.getStorageSync('key')",
+		"description": "从本地缓存中同步获取指定 key 对应的内容。"
+	},
+	"wx.getStorageInfo": {
+		"prefix": "wxGetStorageInfo",
+		"body": [
+			"wx.getStorageInfo({",
+			"\tsuccess: function(res) {",
+			"\t\t$1",
+			"\t}",
+			"})"
+		],
+		"description": "success 接口调用的回调函数，详见返回参数说明\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++sucess 返回参数说明：+++++\n\nkeys 当前storage中所有的key\n\ncurrentSize 当前占用的空间大小, 单位kb\n\nlimitSize 限制的空间大小，单位kb"
+	},
+	"wx.getStorageInfoSync": {
+		"prefix": "wxGetStorageInfoSync",
+		"body": "wx.getStorageInfoSync()",
+		"description": "同步获取当前storage的相关信息"
+	},
+	"wx.removeStorage": {
+		"prefix": "wxRemoveStorage",
+		"body": [
+			"wx.removeStorage({",
+			"\tkey: '$1',",
+			"\tsuccess: function(res) {",
+			"\t\t$2",
+			"\t}",
+			"})"
+		],
+		"description": "从本地缓存中异步移除指定 key"
+	},
+	"wx.removeStorageSync": {
+		"prefix": "wxRemoveStorageSync",
+		"body": "wx.removeStorageSync('key')",
+		"description": "从本地缓存中同步移除指定 key"
+	},
+	"wx.clearStorage": {
+		"prefix": "wxClearStorage",
+		"body": "wx.clearStorage()",
+		"description": "清理本地数据缓存"
+	},
+	"wx.clearStorageSync": {
+		"prefix": "wxClearStorageSync",
+		"body": "wx.clearStorageSync()",
+		"description": "同步清理本地数据缓存"
+	},
+	"wx.getNetworkType": {
+		"prefix": "wxGetNetworkType",
+		"body": [
+			"wx.getNetworkType({",
+			"\tsuccess: function(res) {",
+			"\t\t$1",
+			"\t}",
+			"})"
+		],
+		"description": "success 接口调用成功，返回网络类型 networkType 2g，3g，4g，wifi\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	"wx.getSystemInfo": {
+		"prefix": "wxGetSystemInfo",
+		"body": [
+			"wx.getSystemInfo({",
+			"\tsuccess: function(res) {",
+			"\t\t$1",
+			"}",
+			"})"
+		],
+		"description": "model	手机型号\n\npixelRatio	设备像素比\n\nwindowWidth	窗口宽度\n\nwindowHeight	窗口高度\n\nlanguage	微信设置的语言\n\nversion	微信版本号"
+	},
+	"wx.getSystemInfoSync": {
+		"prefix": "wxGetSystemInfoSync",
+		"body": "wx.getSystemInfoSync()",
+		"description": "model	手机型号\n\npixelRatio	设备像素比\n\nwindowWidth	窗口宽度\n\nwindowHeight	窗口高度\n\nlanguage	微信设置的语言\n\nversion	微信版本号"
+	},
+	"wx.onAccelerometerChange": {
+		"prefix": "wxOnAccelerometerChange",
+		"body": [
+			"wx.onAccelerometerChange(function(res) {",
+			"\t// res.x, res.y, res.z",
+			"})"
+		],
+		"description": "x X 轴\n\ny Y 轴\n\nz Z 轴"
+	},
+	"wx.onCompassChange": {
+		"prefix": "wxOnCompassChange",
+		"body": [
+			"wx.onCompassChange(function(res) {",
+			"\t// res.direction",
+			"})"
+		],
+		"description": "direction 面对的方向度数"
+	},
+	// 微信支付
+	"wx.requestPayment": {
+		"prefix": "wxRequestPayment",
+		"body": [
+			"wx.requestPayment({",
+			"\ttimeStamp: '$1',",
+			"\tnonceStr: '$2',",
+			"\tpackage: '$3',",
+			"\tsignType: '$4',",
+			"\tpaySign: '$5',",
+			"\tsuccess: function(res){",
+			"\t\t$6",
+			"\t},",
+			"\tfail: function(res){",
+			"\t\t$7",
+			"\t}",
+			"})"
+		],
+		"description": "timeStamp 时间戳从1970年1月1日00:00:00至今的秒数,即当前的时间\n\nnonceStr 随机字符串，长度为32个字符以下。\n\npackage 统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*\n\nsignType 签名算法，暂支持 MD5 paySign 签名,具体签名方案参见微信公众号支付帮助文档;\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	}
 }

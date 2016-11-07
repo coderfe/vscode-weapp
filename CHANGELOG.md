@@ -15,6 +15,22 @@
   - wxShowActionSheet
   - wxHideKeyboard
   - wxStopPullDownRefresh
+  - wxSetStorage
+  - wxSetStorageSync
+  - wxGetStorage
+  - wxGetStorageSync
+  - wxGetStorageInfo
+  - wxGetStorageInfoSync
+  - wxRemoveStorage
+  - wxRemoveStorageSync
+  - wxClearStorage
+  - wxClearStorageSync
+  - wxGetNetworkType
+  - wxGetSystemInfo
+  - wxGetSystemInfoSync
+  - wxOnAccelerometerChange
+  - wxOnCompassChange
+  - wxRequestPayment
 
 ## v0.1.7
 
