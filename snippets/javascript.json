@@ -68,7 +68,7 @@
 			"\t}",
 			"})$3"
 		],
-		"description": "网络请求"
+		"description": "url 开发者服务器接口地址\n\ndata 请求的参数\n\nheader 设置请求的 header , header 中不能设置 Referer\n\nmethod 默认为 GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT\n\nsuccess 收到开发者服务成功返回的回调函数，res = {data: '开发者服务器返回的内容'}\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 获取位置
 	"wx.getLocation": {
@@ -82,7 +82,17 @@
 			"\t},",
 			"})$2"
 		],
-		"description": "获取位置"
+		"description": "type 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于wx.openLocation的坐标\n\nsuccess 接口调用成功的回调函数，返回内容详见返回参数说明。\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\nlatitude	纬度，浮点数，范围为-90~90，负数表示南纬\n\nlongitude	经度，浮点数，范围为-180~180，负数表示西经\n\nspeed	速度，浮点数，单位m/s\n\naccuracy	位置的精确度"
+	},
+	// 选择位置
+	"wx.chooseLocation": {
+		"prefix": "wxChooseLocation",
+		"body": [
+			"wx.chooseLocation({",
+			"\t$1",
+			"})"
+		],
+		"description": "success 接口调用成功的回调函数，返回内容详见返回参数说明。\n\ncancel 用户取消时调用\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\nname 位置名称\n\naddress	详细地址\n\nlatitude	纬度，浮点数，范围为-90~90，负数表示南纬\n\nlongitude	经度，浮点数，范围为-180~180，负数表示西经"
 	},
 	// 打开位置
 	"wx.openLocation": {
@@ -100,7 +110,7 @@
 			"\t},",
 			"})$2"
 		],
-		"description": "打开位置"
+		"description": "latitude 纬度，范围为-90~90，负数表示南纬\n\nlongitude 经度，范围为-180~180，负数表示西经\n\nscale 缩放比例，范围1~28，默认为28\n\nname 位置名\n\naddress 地址的详细说明\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 用户登录
 	"wx.login": {
@@ -116,7 +126,22 @@
 			"\t}",
 			"})$2"
 		],
-		"description": "用户登录"
+		"description": "success 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\nerrMsg 调用结果\n\ncode 用户允许登录后，回调内容会带上 code（有效期五分钟），开发者需要将 code 发送到开发者服务器后台，使用code 换取 session_key api，将 code 换成 openid 和 session_key"
+	},
+	// 检查登录状态是否过期
+	"wx.checkSession": {
+		"prefix": "wxCheckSession",
+		"body": [
+			"wx.checkSession({",
+			"\tsuccess: function(){",
+			"\t\t$1",
+			"\t},",
+			"\tfail: function(){",
+			"\t\t$2",
+			"\t},",
+			"})"
+		],
+		"description": "success 接口调用成功的回调函数，登陆态未过期\n\nfail 接口调用失败的回调函数，登陆态已过期\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 用户信息
 	"wx.getUserInfo": {
@@ -134,7 +159,7 @@
 			"\t}",
 			"})$1"
 		],
-		"description": "用户信息"
+		"description": "success 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\nuserInfo 用户信息对象，不包含 openid 等敏感信息rawData不包括敏感信息的原始数据字符串，用于计算签名。\n\nsignature使用sha1(rawData+sessionkey)得到字符串，用于校验用户信息。\n\nencryptedData包括敏感数据在内的完整用户信息的加密数据\n\niv加密算法的初始向量"
 	},
 	// 上传文件
 	"wx.uploadFile": {
@@ -146,7 +171,7 @@
 			"\tname: 'file',",
 			"})$3"
 		],
-		"description": "上传文件"
+		"description": "url 开发者服务器 url\n\nfilePath 要上传文件资源的路径\n\nname 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容\n\nheader HTTP 请求 Header , header 中不能设置 Referer\n\nformData HTTP 请求中其他额外的 form data\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明+++++:\n\ndata 开发者服务器返回的数据\n\nstatusCode HTTP状态码"
 	},
 	// 下载文件
 	"wx.downloadFile": {
@@ -160,7 +185,7 @@
 			"\t}",
 			"})$3"
 		],
-		"description": "下载文件"
+		"description": "url 下载资源的 url\n\nheader HTTP 请求 Header\n\nsuccess 下载成功后以 tempFilePath 的形式传给页面，res = {tempFilePath: '文件的临时路径'}\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 选择图片
 	"wx.chooseImage": {
@@ -175,7 +200,7 @@
 			"\t}",
 			"})$4"
 		],
-		"description": "选择图片"
+		"description": "count 最多可以选择的图片张数，默认9\n\nsizeType original 原图，compressed 压缩图，默认二者都有\n\nsourceType album 从相册选图，camera 使用相机，默认二者都有\n\nsuccess 成功则返回图片的本地文件路径列表tempFilePaths\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 预览图片
 	"wx.previewImage": {
@@ -186,7 +211,7 @@
 			"\turls: [$2]",
 			"})$3"
 		],
-		"description": "预览图片"
+		"description": "current 当前显示图片的链接，不填则默认为 urls 的第一张\n\nurls 需要预览的图片链接列表\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 获取图片信息
 	"wx.getImageInfo": {
@@ -199,7 +224,7 @@
 			"\t}",
 			"})"
 		],
-		"description": "获取图片信息"
+		"description": "src 图片的路径，可以是相对路径，临时文件路径，存储文件路径\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\nwidth 图片宽度，单位px\n\nheight 图片高度 单位px"
 	},
 	// 录音
 	"wx.startRecord": {
@@ -214,7 +239,7 @@
 			"\t},",
 			"})"
 		],
-		"description": "开始录音"
+		"description": "success 录音成功后调用，返回录音文件的临时文件路径，res = {tempFilePath: '录音文件的临时路径'}\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	"wx.stopRecord": {
 		"prefix": "wxStopRecord",
@@ -232,7 +257,7 @@
 			"\t// callback functions, success & fail & complete",
 			"})"
 		],
-		"description": "播放语音"
+		"description": "filePath 需要播放的语音文件的文件路径\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	"wx.pauseVoice": {
 		"prefix": "wxPauseVoice",
@@ -266,7 +291,7 @@
 			"\t}",
 			"})"
 		],
-		"description": "获取音乐播放状态"
+		"description": "success 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++sucess 返回参数说明：+++++\n\nduration	选定音频的长度（单位：s），只有在当前有音乐播放时返回\n\ncurrentPosition 选定音频的播放位置（单位：s），只有在当前有音乐播放时返回\n\nstatus	播放状态（2：没有音乐在播放，1：播放中，0：暂停中）\n\ndownloadPercent	音频的下载进度（整数，80 代表 80%），只有在当前有音乐播放时返回\n\ndataUrl	歌曲数据链接，只有在当前有音乐播放时返回"
 	},
 	// 播放音乐
 	"wx.playBackgroundAudio": {
@@ -279,7 +304,7 @@
 			"\t${4:// callback functions, success & fail & complete}",
 			"})"
 		],
-		"description": "播放音乐"
+		"description": "dataUrl 音乐链接\n\ntitle 音乐标题\n\ncoverImgUrl 封面URL\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 暂停播放音乐
 	"wx.pauseBackgroundAudio": {
@@ -296,7 +321,7 @@
 			"\t${2:// callback functions, success & fail & complete}",
 			"})"
 		],
-		"description": "控制播放音乐进度"
+		"description": "position 音乐位置，单位：秒\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 停止播放音乐
 	"wx.stopBackgroundAudio": {
@@ -335,7 +360,7 @@
 			"\t}",
 			"})$3"
 		],
-		"description": "创建WebSocket连接"
+		"description": "url 开发者服务器接口地址，必须是 wss 协议，且域名必须是后台配置的合法域名\n\ndata 请求的数据\n\nheader HTTP Header , header 中不能设置 Referer\n\nmethod 默认是GET，有效值为： OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 监听WebSocket连接打开事件
 	"wx.onSocketOpen": {
@@ -365,7 +390,7 @@
 			"\tdata: ${1:data}",
 			"})$2"
 		],
-		"description": "通过 WebSocket 连接发送数据"
+		"description": "data 需要发送的内容\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 监听WebSocket接受到服务器的消息事件
 	"wx.onSocketMessage": {
@@ -375,7 +400,7 @@
 			"\t${1:// do something}",
 			"})$2"
 		],
-		"description": "监听WebSocket接受到服务器的消息事件"
+		"description": "data 服务器返回的消息"
 	},
 	// 关闭WebSocket连接
 	"wx.closeSocket": {
@@ -407,7 +432,7 @@
 			"\t}",
 			"})"
 		],
-		"description": "保存文件到本地"
+		"description": "tempFilePath 需要保存的文件的临时路径\n\nsuccess 返回文件的保存路径，res = {savedFilePath: '文件的保存路径'}\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	},
 	// 获取保存到本地的文件列表
 	"wx.getSavedFileList": {
@@ -420,7 +445,7 @@
 			"\t}",
 			"})"
 		],
-		"description": "获取保存到本地的文件列表"
+		"description": "success 接口调用成功的回调函数，返回结果见success返回参数说明\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++\n\nerrMsg 接口调用结果\n\nfileList 文件列表\n\n+++++ fileList 说明：+++++\n\nfilePath 文件的本地路径\n\ncreateTime 文件的保存时的时间戳，从1970/01/01 08:00:00 到当前时间的秒数\n\nsize 文件大小，单位B"
 	},
 	// 获取本地文件的文件信息
 	"wx.getSavedFileInfo": {
@@ -433,7 +458,7 @@
 			"\t}",
 			"})"
 		],
-		"description": "获取本地文件的文件信息"
+		"description": "filePath 文件路径\n\nsuccess 接口调用成功的回调函数，返回结果见success返回参数说明\n\nfail 接口调失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）\n\n+++++success 返回参数说明：+++++errMsg 接口调用结果\n\nsize 文件大小，单位B\n\ncreateTime 文件的保存是的时间戳，从1970/01/01 08:00:00 到当前时间的秒数"
 	},
 	// 删除本地存储的文件
 	"wx.removeSavedFile": {
@@ -444,6 +469,12 @@
 			"\t${2:// callback functions, success & fail & complete}",
 			"})"
 		],
-		"description": "删除本地存储的文件"
+		"description": "filePath 需要删除的文件路径\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
+	},
+	// 新开页面打开文档
+	"wx.openDocument": {
+		"prefix": "wx.openDocument",
+		"body": [],
+		"description": "filePath 文件路径，可通过 downFile 获得\n\nsuccess 接口调用成功的回调函数\n\nfail 接口调用失败的回调函数\n\ncomplete 接口调用结束的回调函数（调用成功、失败都会执行）"
 	}
 }
